@@ -1,8 +1,10 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "bootstrap-saas-official": "latest"
+    "bootstrap-sass-official": "latest",
+    "angular": "~> 1.5"
   },
   "resolutions": {
+    "angular": "1.5"
   }
 }
