@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303222605) do
+ActiveRecord::Schema.define(version: 20160304161356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "instances", force: :cascade do |t|
     t.string   "instanceName",   null: false
-    t.time     "dueDate",        null: false
+    t.string   "dueDate",        null: false
     t.string   "priority",       null: false
-    t.time     "closeDate",      null: false
+    t.string   "closeDate",      null: false
     t.string   "instanceStatus", null: false
     t.string   "assigneeType",   null: false
-    t.time     "createDate",     null: false
+    t.string   "createDate",     null: false
     t.string   "name",           null: false
     t.string   "url",            null: false
     t.string   "assignee",       null: false

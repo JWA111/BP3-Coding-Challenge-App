@@ -3,6 +3,7 @@ var app = angular.module(
 	'dashboard', 
 	[
 		'ngRoute',
+		'ngResource',
 		'templates'
 	]
 )
@@ -87,5 +88,24 @@ var app = angular.module(
 	"$scope",
 	function($scope) {
 		
+	}
+])
+
+
+
+.factory("task", [
+	"$resource",
+	function($resource) {
+		var task = 
+		$resource("/instances/:task_id.json", 
+			{"task_id": "@taskId"}, 
+			{
+				"create": {method: "POST"},
+				"index": {method: "GET", isArray: true},
+				"update": {method: "PUT"},
+				"destroy": {method: "DELETE"}
+			}
+		);
+		return task;
 	}
 ]);
