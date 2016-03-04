@@ -1,17 +1,23 @@
+<div class="container" ng-app="dashboard" ng-controller="DashboardController">
 <head>
-	<div class="page-header">
-		<h1>
-			APP for BP3 Coding Challenge
-		</h1>
-	</div>
+		<div class="jumbotron" style="margin:0;">
+			<h1>
+				<b>BP3 Coding Challenge</b>
+			</h1>
+		</div>
+		<nav class="navbar navbar-dark navbar-inverse" style="margin:0;">
+			<div class="container" style="padding: 3px;">
+				<ul class="nav nav-pills nav-justified">
+					<li role="presentation" id="home" ><a ng-click="show('home')" >Home</a></li>
+					<li role="presentation" id="tasks" ><a ng-click="show('tasks')" >View Tasks</a></li>
+					<li role="presentation" id="import" ><a ng-click="show('import')" >Import Tasks</a></li>
+					<li role="presentation" id="about" ><a ng-click="show('about')" >About</a></li>
+					<li role="presentation"><%= link_to "Log Out" , destroy_user_session_path, method: :delete %></li>
+				</ul>
+			</div>
+		</nav>
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-inverse">
-		<ul class="nav nav-pills">
-			<li role="presentation" class="active"><a href="#">Home</a></li>
-			<li role="presentaion"><a href="#">Tasks</a></li>
-			<li role="presentation"><a href="#">About</a></li>
-			<li role="presentation"><%= link_to "Log Out" , destroy_user_session_path, method: :delete %></li>
-		</ul>
-	</nav> 
+	<div class="container" ng-view></div> 
 </body>
+</div>
