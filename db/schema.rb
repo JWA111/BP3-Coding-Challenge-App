@@ -11,32 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304161356) do
+ActiveRecord::Schema.define(version: 20160305215441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "instances", force: :cascade do |t|
+  create_table "tasks", force: :cascade do |t|
     t.string   "instanceName",   null: false
     t.string   "dueDate",        null: false
     t.string   "priority",       null: false
-    t.string   "closeDate",      null: false
+    t.string   "closeDate"
     t.string   "instanceStatus", null: false
-    t.string   "assigneeType",   null: false
+    t.string   "assigneeType"
     t.string   "createDate",     null: false
     t.string   "name",           null: false
-    t.string   "url",            null: false
-    t.string   "assignee",       null: false
+    t.string   "url"
+    t.string   "assignee"
     t.integer  "instanceId",     null: false
     t.string   "status",         null: false
-    t.string   "variables",      null: false
+    t.string   "variables"
     t.string   "processName",    null: false
     t.integer  "taskId",         null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "instances", ["taskId"], name: "index_instances_on_taskId", unique: true, using: :btree
+  add_index "tasks", ["taskId"], name: "index_tasks_on_taskId", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
