@@ -1,6 +1,16 @@
 class TasksController < ApplicationController
 
-	def create
-		respond_with Tasks.create(assignee: params[:assignee], assigneeType: params[:assigneeType], closeDate: params[:closeDate], createDate: params[:createDate], dueDate: params[:dueDate], instanceId: params[:instanceId], instanceName: params[:instanceName], instanceStatus: params[:instanceStatus], name: params[:name], priority: params[:priority], processName: params[:processName], status: params[:status], taskId: params[:taskId], url: params[:url], variables: params[:variables])
+	def create 
+		tasks_params[:dueDate] = DateTime.parse(tasks_params[:dueDate]).to_i
+		tasks_params[:closeDate] = DateTime.parse(tasks_params[:closeDate]).to_i
+		tasks_params[:createDate] = DateTime.parse(tasks_params[:createDate]).to_i
+		respond_with Tasks.create(tasks_params)
 	end
+
+	def index
+		if params[:type].present? and params[:type] == "state"
+			
+		end
+	end
+	
 end
