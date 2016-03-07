@@ -70,9 +70,78 @@ var app = angular.module(
 	}
 ]
 ).controller( "TaskOverviewController", [
-	"$scope",
-	function($scope) {
+	"$scope", "$http",
+	function($scope, $http) {
 		
+		$("#state_options").hide();
+
+		$(function() {
+    			$( "#state_datepicker" ).datepicker();
+  		});
+
+		$scope.show = function(type) {
+			if($scope.current) {
+				document.getElementById($scope.current).className = "btn btn-info";
+				$("#" + $scope.current + "_options").hide();
+			}
+			$("#" + type + "_options").show();
+			$scope.current = type;
+			document.getElementById($scope.current).className = "btn btn-success";
+		}
+		$scope.report = function(type) {
+
+			if(type == "state") {
+				//validate
+				var valid = true;
+				if(!$scope.stateDate) {
+					document.getElementById("state_datepicker").style.borderColor = "red";
+					valid = false;
+				}
+				else {
+					document.getElementById("state_datepicker").style.borderColor = "green";
+				}
+				if(!$scope.stateHour) {
+                                        document.getElementById("state_time_hour").style.borderColor = "red";
+                                        valid = false;
+                                }
+				else {
+					document.getElementById("state_time_hour").style.borderColor = "green";	
+				}
+				if(!$scope.stateMin) {
+                                        document.getElementById("state_time_min").style.borderColor = "red";
+                                        valid = false;
+                                }
+				else {
+					document.getElementById("state_time_min").style.borderColor = "green";	
+				}
+				if(!$scope.stateSec) {
+                                        document.getElementById("state_time_sec").style.borderColor = "red";
+                                        valid = false;
+                                }
+				else {
+					document.getElementById("state_time_sec").style.borderColor = "green";
+				}
+				if(!$scope.stateTime) {
+                                        document.getElementById("state_select_time").style.borderColor = "red";
+                                        valid = false;
+                                }
+				else {
+					document.getElementById("state_select_time").style.borderColor = "green";
+				}
+
+				//when validated
+				if(valid) {
+					var params = {};
+					params.type = "state";
+					params.date = $scope.stateDate;
+					params.hour = $scope.stateHour;
+					params.min = $scope.stateMin;
+					params.sec = $scope.stateSec;
+					params.time = $scope.stateTime;
+					console.log(params);
+				}
+			}	
+		}
 	}
 ])
 .controller( "TaskSearchController", [

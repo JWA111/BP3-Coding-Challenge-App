@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305215441) do
+ActiveRecord::Schema.define(version: 20160307023546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "tasks", force: :cascade do |t|
     t.string   "instanceName",   null: false
-    t.string   "dueDate",        null: false
+    t.datetime "dueDate",        null: false
     t.string   "priority",       null: false
-    t.string   "closeDate"
+    t.datetime "closeDate"
     t.string   "instanceStatus", null: false
     t.string   "assigneeType"
-    t.string   "createDate",     null: false
+    t.datetime "createDate",     null: false
     t.string   "name",           null: false
     t.string   "url"
     t.string   "assignee"
