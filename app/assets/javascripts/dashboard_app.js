@@ -3,7 +3,9 @@ var app = angular.module(
 	'dashboard', 
 	[
 		'ngRoute',
-		'templates'
+		'ngResource',
+		'templates',
+		'ng-rails-csrf'
 	]
 )
 
@@ -14,9 +16,13 @@ var app = angular.module(
 			controller: "HomeController",
 			templateUrl: "home.html"
 		});
-		$routeProvider.when("/tasks", {
-			controller: "TaskController",
-			templateUrl: "tasks.html"
+		$routeProvider.when("/task_overview", {
+			controller: "TaskOverviewController",
+			templateUrl: "task_overview.html"
+		});
+		$routeProvider.when("/task_search", {
+			controller: "TaskSearchController",
+			templateUrl: "task_search.html"
 		});
 		$routeProvider.when("/import", {
 			controller: "ImportController",
@@ -62,23 +68,40 @@ var app = angular.module(
 	function($scope) {
 		
 	}
+]
+).controller( "TaskOverviewController", [
+	"$scope",
+	function($scope) {
+		
+	}
 ])
-.controller( "TaskController", [
+.controller( "TaskSearchController", [
 	"$scope",
 	function($scope) {
 		
 	}
 ])
 .controller( "ImportController", [
-	"$scope","$http",
-	function($scope, $http) {
+	"$scope","$http","Task",
+	function($scope, $http, Task) {
+
 		$scope.upload = function() {
 			try {
-				$scope.data = JSON.parse(document.getElementById("import_data").value);
-				console.log($scope.data);
+				$scope.suc = 0;
+				$scope.fail = 0;
+				$scope.msg = null;
+				var data = JSON.parse(document.getElementById("import_data").value);
+				for(var i=0; i < data.length; i++) {
+					var newTask = new Task(data[i]);
+					newTask.variables = JSON.stringify(newTask.variables);
+					newTask.taskId = newTask.id;
+					delete newTask.id;	
+					newTask.$save();
+				}
+				document.getElementById("import_data").value = "Uploaded!!!";	
 			}
 			catch(err) {
-				alert("please check the formatting of your data");
+				alert("please check the formatting of your data\n" + err);
 			}
 		}
 	}
@@ -87,5 +110,15 @@ var app = angular.module(
 	"$scope",
 	function($scope) {
 		
+	}
+])
+
+
+
+.factory("Task", [
+	"$resource",
+	function($resource) {
+		var Task = $resource("/tasks/:id.json");
+		return Task;
 	}
 ]);
