@@ -33,14 +33,14 @@
 						</div>
 						<div class="row" style="margin:0;">
                                                         <div class="input-group" style="margin-left:10%;margin-right:20%;margin-top:10px;">
-								<span class="input-group-addon" id="basic-addon1"><b>Time</b></span>
-                                                                <input type="text" ng-model="stateHour" class="form-control" id="state_time_hour"  placeholder="HH" aria-describedby="basic-addon1">
-								<span class="input-group-addon" id="basic-addon2"><b>&#58;</b></span>
-								<input type="text" ng-model="stateMin" class="form-control" id="state_time_min"  placeholder="MM" aria-describedby="basic-addon2">
+								<span class="input-group-addon" id="basic-addon2"><b>Time</b></span>
+                                                                <input type="text" ng-model="stateHour" class="form-control" id="state_time_hour"  placeholder="HH" aria-describedby="basic-addon2">
 								<span class="input-group-addon" id="basic-addon3"><b>&#58;</b></span>
-								<input type="text" ng-model="stateSec" class="form-control" id="state_time_sec"  placeholder="SS" aria-describedby="basic-addon3">
-                                                        	<span class="input-group-addon" id="basic-addon4">&nbsp;</span>
-								<select class="form-control" ng-model="stateTime" id="state_select_time" style="min-width:100px;" aria-describedby="basic-addon4">
+								<input type="text" ng-model="stateMin" class="form-control" id="state_time_min"  placeholder="MM" aria-describedby="basic-addon3">
+								<span class="input-group-addon" id="basic-addon4"><b>&#58;</b></span>
+								<input type="text" ng-model="stateSec" class="form-control" id="state_time_sec"  placeholder="SS" aria-describedby="basic-addon4">
+                                                        	<span class="input-group-addon" id="basic-addon5">&nbsp;</span>
+								<select class="form-control" ng-model="stateTime" id="state_select_time" style="min-width:100px;" aria-describedby="basic-addon5">
 									<option>AM</option>
 									<option>PM</option>
 								</select>
@@ -50,9 +50,118 @@
 							<button type="button" class="btn btn-info btn-block" id="report_state_submit" style="margin-top:30px;margin-left:10%;margin-right:20%;width:70%;" ng-click="report('state')"><span class="glyphicon glyphicon-list-alt"></span><span>&nbsp; Generate</span></button>
 						</div>
 					</div>
+
+<!-- options for time span report -->
+                    <div class="row" id="time_options" style="margin:0px;">
+                        <div class="row" style="margin:0;">
+                            <div class="input-group" style="margin-left:10%;margin-right:20%;margin-top:80px;">
+                                <span class="input-group-addon" id="basic-addon6"><b>Start Date</b></span>
+                                <input type="text" ng-model="timeDate" class="form-control" id="time_datepicker1"  placeholder="Select Date" aria-describedby="basic-addon6">
+                            </div>
+                        </div>
+                        <div class="row" style="margin:0;">
+                            <div class="input-group" style="margin-left:10%;margin-right:20%;margin-top:10px;">
+                                <span class="input-group-addon" id="basic-addon7"><b>Time</b></span>
+                                <input type="text" ng-model="timeHour" class="form-control" id="time_time_hour1"  placeholder="HH" aria-describedby="basic-addon7">
+                                <span class="input-group-addon" id="basic-addon8"><b>&#58;</b></span>
+                                <input type="text" ng-model="timeMin" class="form-control" id="time_time_min1"  placeholder="MM" aria-describedby="basic-addon8">
+                                <span class="input-group-addon" id="basic-addon9"><b>&#58;</b></span>
+                                <input type="text" ng-model="timeSec" class="form-control" id="time_time_sec1"  placeholder="SS" aria-describedby="basic-addon9">
+                                <span class="input-group-addon" id="basic-addon10">&nbsp;</span>
+                                <select class="form-control" ng-model="timeTime" id="time_select_time1" style="min-width:100px;" aria-describedby="basic-addon10">
+                                    <option>AM</option>
+                                    <option>PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin:0;">
+                            <div class="input-group" style="margin-left:10%;margin-right:20%;margin-top:30px;">
+                                <span class="input-group-addon" id="basic-addon11"><b>End Date</b></span>
+                                <input type="text" ng-model="timeDate2" class="form-control" id="time_datepicker2"  placeholder="Select Date" aria-describedby="basic-addon11">
+                            </div>
+                        </div>
+                        <div class="row" style="margin:0;">
+                            <div class="input-group" style="margin-left:10%;margin-right:20%;margin-top:10px;">
+                                <span class="input-group-addon" id="basic-addon12"><b>Time</b></span>
+                                <input type="text" ng-model="timeHour2" class="form-control" id="time_time_hour2"  placeholder="HH" aria-describedby="basic-addon12">
+                                <span class="input-group-addon" id="basic-addon13"><b>&#58;</b></span>
+                                <input type="text" ng-model="timeMin2" class="form-control" id="time_time_min2"  placeholder="MM" aria-describedby="basic-addon13">
+                                <span class="input-group-addon" id="basic-addon14"><b>&#58;</b></span>
+                                <input type="text" ng-model="timeSec2" class="form-control" id="time_time_sec2"  placeholder="SS" aria-describedby="basic-addon14">
+                                <span class="input-group-addon" id="basic-addon15">&nbsp;</span>
+                                <select class="form-control" ng-model="timeTime2" id="time_select_time2" style="min-width:100px;" aria-describedby="basic-addon15">
+                                    <option>AM</option>
+                                    <option>PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin:0;">
+                            <button type="button" class="btn btn-info btn-block" id="report_time_submit" style="margin-top:30px;margin-left:10%;margin-right:20%;width:70%;" ng-click="report('time')"><span class="glyphicon glyphicon-list-alt"></span><span>&nbsp; Generate</span></button>
+                        </div>
+                    </div>
+<!-- options for instance report -->
+                    <div class="row" id="instance_options" style="margin:0px;">
+                        <div class="row" style="margin:0;">
+                            <div class="input-group" style="margin-left:10%;margin-right:20%;margin-top:80px;">
+                                <span class="input-group-addon" id="basic-addon16"><b>Instance ID</b></span>
+                                <input type="text" ng-model="instanceId" class="form-control" id="instance_id"  placeholder="Instance ID" aria-describedby="basic-addon16">
+                            </div>
+                        </div>
+                        <div class="row" style="margin:0;">
+                            <button type="button" class="btn btn-info btn-block" id="report_instance_submit" style="margin-top:30px;margin-left:10%;margin-right:20%;width:70%;" ng-click="report('instance')"><span class="glyphicon glyphicon-list-alt"></span><span>&nbsp; Generate</span></button>
+                        </div>
+                    </div>
+<!-- options for assignee report -->
+                    <div class="row" id="assignee_options" style="margin:0px;">
+                        <div class="row" style="margin:0;">
+                            <div class="input-group" style="margin-left:10%;margin-right:20%;margin-top:80px;">
+                                <span class="input-group-addon" id="basic-addon17"><b>Assignee</b></span>
+                                <input type="text" ng-model="assignee" class="form-control" id="assignee_name"  placeholder="Assignee Name" aria-describedby="basic-addon17">
+                            </div>
+                        </div>
+                        <div class="row" style="margin:0;">
+                            <button type="button" class="btn btn-info btn-block" id="report_assignee_submit" style="margin-top:30px;margin-left:10%;margin-right:20%;width:70%;" ng-click="report('assignee')"><span class="glyphicon glyphicon-list-alt"></span><span>&nbsp; Generate</span></button>
+                        </div>
+                    </div>
+
 				</div>
 			</div>	
 		</div>
 	</div>
+
+
+    <!-- reports here: -->
+    <div id="results" class="panel panel-info" style="margin-top:30px;">
+        <div class="panel-heading" style="text-align: center;">
+            <h2>{{title}} Report</h2>
+        </div>
+        <div class="panel-body" style="padding: 10px;">
+            <div class="row" style="margin-left:20px;margin-top:15px;">
+                <h5><strong>Criteria: {{criteria}}</strong></h5>
+            </div>
+            <div class="row" style="margin:0;">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>Status</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Open Tasks</th>
+                                <td>{{open}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Closed Tasks</th>
+                                <td>{{closed}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
