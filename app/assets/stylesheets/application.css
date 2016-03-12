@@ -18,8 +18,16 @@
 
 
 body {
-    padding-top: 50px;
+    padding: 0;
 }
+#app-body {
+	width: auto;
+	padding: 0;
+}
+/*div.row {*/
+	/*padding:0;*/
+	/*margin: 0;*/
+/*}*/
 .input-group-btn .btn-group {
     display: flex !important;
 }
@@ -42,8 +50,8 @@ body {
     border-width: 2px;
 }
 #search-page-wrapper {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 10%;
+    margin-right: 10%;
     width: 720px;
     padding: 10px;
     background-color: #999999;
@@ -68,8 +76,7 @@ body {
     border-radius: 7px 7px 4px 4px;
 }
 #filter-options {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 2%;
     margin-top: 10px;
     width: 700px;
     padding: 2px;
@@ -100,6 +107,44 @@ span.input-group-addon.tag {
     display: inline-block;
     margin-left: 12px;
     width: 280px;
+}
+div.input-group.time1 {
+	float: left;
+    margin-top:10px;
+	margin-right: 10px;
+	margin-left: 60px;
+	margin-bottom: 10px;
+    width: 280px;
+}
+div.input-group.time1 input {
+	width: 45px;
+}
+div.input-group.time2 {
+	float: right;
+    margin-top:10px;
+    margin-left: 10px;
+    margin-right: 75px;
+	margin-bottom: 10px;
+    width: 280px;
+}
+div.input-group.time2 input {
+	width: 45px;
+}
+span.input-group-addon.time-title {
+    width: 25px;
+	padding: 4px;
+}
+span.input-group-addon.time {
+    width: 4px;
+    padding-left: 2px;
+    padding-right: 2px;
+
+}
+#time1 {
+	min-width: 67px !important;
+}
+#time2 {
+	min-width: 67px !important;
 }
 div.name-field {
     margin-left: auto;

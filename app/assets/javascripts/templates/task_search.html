@@ -3,101 +3,177 @@
 </div>
 <div class="container" ng-controller="TaskSearchController">
     <div class="row">
-        <div class="col-md-8" id="search-page-wrapper">
-            <div class="col-md-6" id="search-field-wrapper_outer">
-                <div class="col-md-6" id="search-field-wrapper_inner">
-                    <div class="input-group" id="search_bar">
-                        <input type="text" class="form-control" placeholder="Search by ID, name, instance ID, instance name, process name, assignee, or status" />
-                        <div class="input-group-btn">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-info" ng-click="toggle()"><span class="glyphicon glyphicon-plus">&nbsp;<b>Filters</b></span></button>
-                                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6" id="filter-options">
-                <div class="row" id="row1">
-                    <div class="filers-title">
-                        <h5><b>Date Intervals</b></h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="row-fields">
-                        <div class="row-field1">
-                            <div class="input-group" id="start-date">
-                                <span class="input-group-addon tag" id="basic-addon1"><b>Start Date</b></span>
-                                <input type="text" ng-model="date1" class="form-control" id="datepicker1"  placeholder="Select Date" aria-describedby="basic-addon1">
-                            </div>
-                        </div>
-                        <div class="row-field2">
-                            <div class="input-group" id="end-date">
-                                <span class="input-group-addon tag" id="basic-addon2"><b>End Date</b></span>
-                                <input type="text" ng-model="date2" class="form-control" id="datepicker2"  placeholder="Select Date" aria-describedby="basic-addon2">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="divide">
-                <div class="row">
-                    <div class="filers-title">
-                        <h5><b>Instance Attributes</b></h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="row-fields">
-                        <div class="row-field1">
-                            <div class="input-group" id="instance-name-group">
-                                <span class="input-group-addon tag" id="basic-addon3"><b>Instance Name</b></span>
-                                <input type="text" ng-model="instanceName" class="form-control" id="instance-name"  placeholder="Enter Name" aria-describedby="basic-addon3">
-                            </div>
-                        </div>
-                        <div class="row-field2">
-                            <div class="input-group" id="instance-id-group">
-                                <span class="input-group-addon tag" id="basic-addon4"><b>Instance ID</b></span>
-                                <input type="text" ng-model="instanceId" class="form-control" id="instance-id"  placeholder="Enter ID" aria-describedby="basic-addon4">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="name-field">
-                        <div class="input-group" id="status-group">
-                            <span class="input-group-addon tag" id="basic-addon5"><b>Instance Status</b></span>
-                            <input type="text" ng-model="status" class="form-control" id="status"  placeholder="Enter status" aria-describedby="basic-addon5">
-                        </div>
-                    </div>
-                </div>
-                <hr class="divide">
-                <div class="row">
-                    <div class="filers-title">
-                        <h5><b>Task Assignee</b></h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="name-field">
-                        <div class="input-group" id="assignee-group">
-                            <span class="input-group-addon tag" id="basic-addon6"><b>Assignee</b></span>
-                            <input type="text" ng-model="assignee" class="form-control" id="assignee"  placeholder="Enter name" aria-describedby="basic-addon6">
-                        </div>
-                    </div>
-                </div>
-                <hr class="divide">
-                <div class="row">
-                    <div class="filers-title">
-                        <h5><b>Parent Process</b></h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="name-field">
-                        <div class="input-group" id="process-group">
-                            <span class="input-group-addon tag" id="basic-addon7"><b>Process Name</b></span>
-                            <input type="text" ng-model="process" class="form-control" id="process"  placeholder="Enter name" aria-describedby="basic-addon7">
-                        </div>
-                    </div>
-                </div>
-            </div>
+			<div class="col-md-8" id="search-page-wrapper">
+				<div class="col-md-6" id="search-field-wrapper_outer">
+					<div class="col-md-6" id="search-field-wrapper_inner">
+						<div class="input-group" id="search_bar">
+							<input type="text" ng-change="search()" ng-model="searchStr" class="form-control" placeholder="Search by ID, name, instance ID, instance name, process name, assignee, or status" />
+							<div class="input-group-btn">
+								<div class="btn-group" role="group">
+									<button type="button" class="btn btn-info" ng-click="toggle()"><span class="glyphicon glyphicon-plus">&nbsp;<b>Filters</b></span></button>
+									<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+				<div class="col-md-6" id="filter-options">
+					<div class="row" id="row1">
+						<div class="filers-title">
+							<h5><b>Date Intervals</b></h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="row-fields">
+							<div class="row-field1">
+								<div class="input-group" id="start-date">
+									<span class="input-group-addon tag" id="basic-addon1"><b>Start Date</b></span>
+									<input type="text" ng-model="params.date1" ng-change="search()" class="form-control" id="datepicker1"  placeholder="Select Date" aria-describedby="basic-addon1">
+								</div>
+							</div>
+							<div class="row-field2">
+								<div class="input-group" id="end-date">
+									<span class="input-group-addon tag" id="basic-addon2"><b>End Date</b></span>
+									<input type="text" ng-model="params.date2" ng-change="search()" class="form-control" id="datepicker2"  placeholder="Select Date" aria-describedby="basic-addon2">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-group time1">
+							<span class="input-group-addon time-title" id="basic-addont1"><b>Time</b></span>
+							<input type="text" ng-model="params.hour1" ng-change="search()" class="form-control" id="hour1"  placeholder="HH" aria-describedby="basic-addont1">
+							<span class="input-group-addon time" id="basic-addont2"><b>&#58;</b></span>
+							<input type="text" ng-model="params.min1" ng-change="search()" class="form-control" id="min1"  placeholder="MM" aria-describedby="basic-addont2">
+							<span class="input-group-addon time" id="basic-addont3"><b>&#58;</b></span>
+							<input type="text" ng-model="params.sec1" ng-change="search()" class="form-control" id="sec1"  placeholder="SS" aria-describedby="basic-addont3">
+							<span class="input-group-addon time" id="basic-addont4">&nbsp;</span>
+							<select class="form-control" ng-model="params.time1" ng-change="search()" id="time1" style="min-width:100px;" aria-describedby="basic-addont4">
+								<option>AM</option>
+								<option>PM</option>
+							</select>
+						</div>
+						<div class="input-group time2">
+							<span class="input-group-addon time-title" id="basic-addont5"><b>Time</b></span>
+							<input type="text" ng-model="params.hour2" ng-change="search()" class="form-control" id="hour2"  placeholder="HH" aria-describedby="basic-addont5">
+							<span class="input-group-addon time" id="basic-addont6"><b>&#58;</b></span>
+							<input type="text" ng-model="params.min2" ng-change="search()" class="form-control" id="min2"  placeholder="MM" aria-describedby="basic-addont6">
+							<span class="input-group-addon time" id="basic-addont7"><b>&#58;</b></span>
+							<input type="text" ng-model="params.sec2" ng-change="search()" class="form-control" id="sec2"  placeholder="SS" aria-describedby="basic-addont7">
+							<span class="input-group-addon time" id="basic-addont8">&nbsp;</span>
+							<select class="form-control" ng-model="params.time2" ng-change="search()" id="time2" style="min-width:100px;" aria-describedby="basic-addont8">
+								<option>AM</option>
+								<option>PM</option>
+							</select>
+						</div>
+					</div>
+					<hr class="divide">
+					<div class="row">
+						<div class="filers-title">
+							<h5><b>Instance Attributes</b></h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="row-fields">
+							<div class="row-field1">
+								<div class="input-group" id="instance-name-group">
+									<span class="input-group-addon tag" id="basic-addon3"><b>Instance Name</b></span>
+									<input type="text" ng-model="params.instanceName" ng-change="search()" class="form-control" id="instance-name"  placeholder="Enter Name" aria-describedby="basic-addon3">
+								</div>
+							</div>
+							<div class="row-field2">
+								<div class="input-group" id="instance-id-group">
+									<span class="input-group-addon tag" id="basic-addon4"><b>Instance ID</b></span>
+									<input type="text" ng-model="params.instanceId" ng-change="search()" class="form-control" id="instance-id"  placeholder="Enter ID" aria-describedby="basic-addon4">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="name-field">
+							<div class="input-group" id="status-group">
+								<span class="input-group-addon tag" id="basic-addon5"><b>Instance Status</b></span>
+								<input type="text" ng-model="params.status" ng-change="search()" class="form-control" id="status"  placeholder="Enter status" aria-describedby="basic-addon5">
+							</div>
+						</div>
+					</div>
+					<hr class="divide">
+					<div class="row">
+						<div class="filers-title">
+							<h5><b>Task Assignee</b></h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="name-field">
+							<div class="input-group" id="assignee-group">
+								<span class="input-group-addon tag" id="basic-addon6"><b>Assignee</b></span>
+								<input type="text" ng-model="params.assignee" ng-change="search()" class="form-control" id="assignee"  placeholder="Enter name" aria-describedby="basic-addon6">
+							</div>
+						</div>
+					</div>
+					<hr class="divide">
+					<div class="row">
+						<div class="filers-title">
+							<h5><b>Parent Process</b></h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="name-field">
+							<div class="input-group" id="process-group">
+								<span class="input-group-addon tag" id="basic-addon7"><b>Process Name</b></span>
+								<input type="text" ng-model="params.processName" ng-change="search()" class="form-control" id="process"  placeholder="Enter name" aria-describedby="basic-addon7">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
+	<div class="row" ng-if="tasks">
+		<div class="col-md-12" id="search-results-wrapper">
+			<header>
+				<h1 class="h3">{{results}}</h1>
+			</header>
+			<nav>
+				<h4><small>Page {{pageNum}}</small></h4>
+				<ul class="pager">
+					<li class="previous">
+						<a href="" ng-click="changePage(-1)">&larr; Previous</a>
+					</li>
+					<li class="next">
+						<a href="" ng-click="changePage(1)">Next &rarr;</a>
+					</li>
+				</ul>
+			</nav>
+			<ol class="list-group">
+				<li class="list-group-item clearfix" ng-repeat="task in tasks">
+					<h4 class="pull-right">
+						<small class="text-uppercase">Instance&#58;</small>
+						{{task.instanceName}}
+					</h4>
+					<h2 class="h3">
+						{{task.name}}
+						<small>&#35;{{task.taskId}}</small>
+					</h2>
+					<div class="pull-right">
+						<h5><small>{{task.url}}</small></h5>
+					</div>
+					<h4>Status: {{task.status}}&emsp;Assignee: {{task.assignee}}</h4>
+					<h4><small>Created {{task.createDate}}</small><small ng-if="task.closeDate">&emsp;Closed {{task.closeDate}}</small></h4>
+				</li>
+			</ol>
+			<nav>
+				<ul class="pager">
+					<li class="previous">
+						<a href="" ng-click="changePage(-1)">&larr; Previous</a>
+					</li>
+					<li class="next">
+						<a href="" ng-click="changePage(1)">Next &rarr;</a>
+					</li>
+				</ul>
+				<h4><small>Page {{pageNum}}</small></h4>
+			</nav>
+		</div>
+	</div>
 </div>

@@ -28,10 +28,6 @@ var app = angular.module(
 			controller: "ImportController",
 			templateUrl: "import.html"
 		});
-		$routeProvider.when("/about", {
-			controller: "AboutController",
-			templateUrl: "about.html"
-		});
 	}
 ])
 
@@ -319,9 +315,12 @@ var app = angular.module(
 	}
 ])
 .controller( "TaskSearchController", [
-	"$scope",
-	function($scope) {
-
+	"$scope", "$http",
+	function($scope, $http) {
+		$scope.params = {};
+		$scope.params.type = 'search';
+		$scope.pageNum = 0;
+		$scope.params.offset = $scope.pageNum * 8;
         $("#filter-options").hide();
 
         $(function() {
@@ -336,8 +335,36 @@ var app = angular.module(
             else {
                 $("#filter-options").slideDown("slow", "swing");
             }
-        }
+        };
+		$scope.search = function() {
+			if(!$scope.searchStr) {
+				$scope.params.search = '_';
+			}
+			else {
+				$scope.params.search = $scope.searchStr;
+			}
+			$http.get("/tasks.json",
+				{"params": $scope.params})
+				.then(function(response) {
+					$scope.tasks = response.data;
+				}, function(response) {
+					console.log("Error: Server status " + response.status);
+				});
+		};
+
+		$scope.changePage = function(change) {
+			if(change > 0 || ($scope.pageNum > 0 && change < 0)) {
+				$scope.pageNum += change;
+				$scope.params.offset = $scope.pageNum * 8;
+				$scope.search();
+			}
+		};
+		$scope.search();
 	}
+])
+.controller("taskModal", [
+
+
 ])
 .controller( "ImportController", [
 	"$scope","$http",
@@ -394,12 +421,7 @@ var app = angular.module(
 		}
 	}
 ])
-.controller( "AboutController", [
-	"$scope",
-	function($scope) {
-		
-	}
-])
+
 
     .factory("Task", [
         "$resource",
