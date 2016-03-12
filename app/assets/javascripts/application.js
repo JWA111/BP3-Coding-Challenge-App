@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular
+//= require angular-bootstrap
 //= require ng-rails-csrf
 //= require angular-route
 //= require angular-resource

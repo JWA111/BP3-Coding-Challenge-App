@@ -1,4 +1,4 @@
-<div class="container" ng-app="dashboard" ng-controller="DashboardController">
+<div id="app-body" class="container" ng-app="dashboard" ng-controller="DashboardController">
 <head>
 		<div class="jumbotron" style="margin:0;">
 			<h1>
@@ -12,7 +12,6 @@
 					<li role="presentation" id="task_overview" ><a ng-click="show('task_overview')" >Task Overview</a></li>
 					<li role="presentation" id="task_search" ><a ng-click="show('task_search')" >Task Search</a></li>
 					<li role="presentation" id="import" ><a ng-click="show('import')" >Import Tasks</a></li>
-					<li role="presentation" id="about" ><a ng-click="show('about')" >About</a></li>
 					<li role="presentation"><%= link_to "Log Out" , destroy_user_session_path, method: :delete %></li>
 				</ul>
 			</div>

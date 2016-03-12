@@ -4,7 +4,8 @@
     "bootstrap-sass-official": "latest",
     "angular-resource": "latest",
     "angular": "~> 1.5",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "angular-bootstrap": "0.11.0"
   },
   "resolutions": {
     "angular": "1.5"
